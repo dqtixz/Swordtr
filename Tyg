@@ -1,15 +1,18 @@
-local CoastingLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/GhostDuckyy/UI-Libraries/main/Coasting%20Ui%20Lib/source.lua"))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
-local AimbotTab = CoastingLibrary:CreateTab("Aimbot")
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 
-local MainSection = AimbotTab:CreateSection("Main")
-
---local ConfigSection = AimbotTab:CreateSection("Config")
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/GGH52lan/GGH52lan/main/keyboard.txt"))()
-
-MainSection:CreateSlider("Sword Reach", 0, 1000, 0, false, function(value)
-   local circleSize = value
+Tab:AddTextbox({
+	Name = "Reach Sword",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		 local circleSize = value
 local showCircle = true
 
 local function isInsideCircle(position)
@@ -122,17 +125,20 @@ end
 
 getgenv().ToggleCircleVisibility = function()
     showCircle = not showCircle
-end
-end)
+    end
+	end	  
+})
 
-
-MainSection:CreateButton("AutoPlay press X", function() 
-  
+Tab:AddButton({
+	Name = "Auto Play Press X",
+	Callback = function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/yeerma/1/main/bot'))()
-end)
+	end    
+})
 
-
-MainSection:CreateButton("Auto Sword", function()
+Tab:AddButton({
+	Name = "Auto Sword Equip",
+	Callback = function()
 local player = game.Players.LocalPlayer
 local backpack = player.Backpack
 
@@ -141,4 +147,14 @@ for _,item in pairs(backpack:GetChildren()) do
         item.Parent = player.Character
     end
 end
-end)
+	end    
+})
+
+Tab:AddButton({
+	Name = "Keyboard For Button X",
+	Callback = function()
+	  loadstring(game:HttpGet("https://raw.githubusercontent.com/GGH52lan/GGH52lan/main/keyboard.txt"))()
+  	end    
+})
+
+OrionLib:Init()
