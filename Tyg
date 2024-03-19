@@ -1,8 +1,10 @@
 local CoastingLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/GhostDuckyy/UI-Libraries/main/Coasting%20Ui%20Lib/source.lua"))()
 
 local AimbotTab = CoastingLibrary:CreateTab("Aimbot")
+
 local MainSection = AimbotTab:CreateSection("Main")
-local ConfigSection = AimbotTab:CreateSection("Config")
+
+--local ConfigSection = AimbotTab:CreateSection("Config")
 
 
 MainSection:CreateSlider("Sword Reach", 0, 1000, 0, false, function(value)
@@ -123,9 +125,11 @@ end
 end)
 
 
-MainSection:CreateButton("AutoPlay press (x)", function() 
+MainSection:CreateButton("AutoPlay press X", function() 
+  
 loadstring(game:HttpGet('https://raw.githubusercontent.com/yeerma/1/main/bot'))()
 end)
+
 
 MainSection:CreateButton("Auto Sword", function()
 local player = game.Players.LocalPlayer
