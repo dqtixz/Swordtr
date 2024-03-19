@@ -257,6 +257,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/yeerma/1/main/bot'))(
 Tab:AddButton({
 	Name = "Auto Sword Equip",
 	Callback = function()
+while true do
 local player = game.Players.LocalPlayer
 local backpack = player.Backpack
 
@@ -265,6 +266,7 @@ for _,item in pairs(backpack:GetChildren()) do
         item.Parent = player.Character
     end
 end
+wait(0.1) end
 	end    
 })
 
